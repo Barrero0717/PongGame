@@ -1,7 +1,11 @@
 # Part 1: Getting started
 
 import turtle
-import os
+
+# This library is imported for sound use, only in Windows.
+import winsound
+# This library is imported for sound use, only on MacOs or Linux.
+# import os 
 
 window = turtle.Screen()
 window.title("Pong Game by Andres Felipe Barrero")
@@ -38,8 +42,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.05 #Increase this number if the ball speed is too slow, or decrease the number if it is too fast.
-ball.dy = 0.05 #Increase this number if the ball speed is too slow, or decrease the number if it is too fast.
+ball.dx = 0.1 #Increase this number if the ball speed is too slow, or decrease the number if it is too fast.
+ball.dy = 0.1 #Increase this number if the ball speed is too slow, or decrease the number if it is too fast.
 
 # Pen
 pen = turtle.Turtle()
@@ -95,12 +99,16 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
-        os.system("afplay bounce.wav&")
+        #os.system("aplay bounce.wav&") # Sound in MacOS
+        #os.system("afplay bounce.wav&") # Sound in Linux
+        winsound.PlaySound("bounce.wav", winsound.SND_ASYNC) #Sound in Windows
 
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
-        os.system("afplay bounce.wav&")
+        #os.system("aplay bounce.wav&") # Sound in MacOS
+        #os.system("afplay bounce.wav&") # Sound in Linux
+        winsound.PlaySound("bounce.wav", winsound.SND_ASYNC) #Sound in Windows
 
     # Left and right
     if ball.xcor() > 350:
@@ -120,9 +128,13 @@ while True:
     # Paddle and ball collisions
     if ball.xcor() < -340 and ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50:
         ball.dx *= -1 
-        os.system("afplay bounce.wav&")
+        #os.system("aplay bounce.wav&") # Sound in MacOS
+        #os.system("afplay bounce.wav&") # Sound in Linux
+        winsound.PlaySound("bounce.wav", winsound.SND_ASYNC) #Sound in Windows
     
     elif ball.xcor() > 340 and ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50:
         ball.dx *= -1
-        os.system("afplay bounce.wav&")
+        #os.system("aplay bounce.wav&") # Sound in MacOS
+        #os.system("afplay bounce.wav&") # Sound in Linux
+        winsound.PlaySound("bounce.wav", winsound.SND_ASYNC) #Sound in Windows
 

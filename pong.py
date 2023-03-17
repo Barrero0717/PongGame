@@ -118,10 +118,11 @@ while True:
         ball.dx *= -1
 
     # Paddle and ball collisions
-    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+    if ball.xcor() < -340 and ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50:
+        ball.dx *= -1 
+        os.system("afplay bounce.wav&")
+    
+    elif ball.xcor() > 340 and ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50:
         ball.dx *= -1
         os.system("afplay bounce.wav&")
 
-    if (ball.xcor() < -340 and ball.xcor() < -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
-        ball.dx *= -1
-        os.system("afplay bounce.wav&")
